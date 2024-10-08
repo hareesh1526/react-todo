@@ -1,11 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+<<<<<<< HEAD
   name: react-todo-app
   labels:
     app: react-todo
 spec:
   replicas: 3  # Number of replicas
+=======
+  name: react-todo
+  labels:
+    app: react-todo
+spec:
+  replicas: 1
+>>>>>>> e8e1c12d2a2dc3e3920aba9b1651724e1631dbd8
   selector:
     matchLabels:
       app: react-todo
@@ -16,6 +24,7 @@ spec:
     spec:
       containers:
       - name: react-todo
+<<<<<<< HEAD
         image: harish126/react-todo:latest  
         ports:
         - containerPort: 80
@@ -23,4 +32,22 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
+=======
+        image: harish126/react-todo
+        ports:
+        - containerPort: 80  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-todo-service
+spec:
+  selector:
+    app: react-todo
+  ports:
+    - protocol: TCP
+      port: 80      
+      targetPort: 80 
+  type: LoadBalancer  
+>>>>>>> e8e1c12d2a2dc3e3920aba9b1651724e1631dbd8
 
